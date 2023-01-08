@@ -43,7 +43,7 @@ router.get("/:userId", async (req, res) => {
   try {
     const conversation = await Board.find({
       users: { $in: [req.params.userId] },
-    }).sort({ updatedAt: 1 });
+    });
     res.status(200).json(conversation);
   } catch (err) {
     res.status(500).json(err);
@@ -52,7 +52,9 @@ router.get("/:userId", async (req, res) => {
 
 router.get("/boardSp/:id", async (req, res) => {
   try {
-    const board = await Board.findById(req.params.id);
+    const board = await Board.findById(req.params.id).sort({
+      createdAt: "ascending",
+    });
     res.status(200).json(board);
   } catch (err) {
     res.status(500).json(err);
