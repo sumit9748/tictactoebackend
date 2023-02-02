@@ -7,7 +7,7 @@ const boardRoute = require("./routes/board");
 const morgan = require("morgan");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 
 var server = require("http").createServer(app);
 
@@ -22,7 +22,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "https://tictactoesumit.onrender.com",
+    origin: "http://localhost:3000",
   })
 );
 app.use(express.json());
@@ -31,13 +31,13 @@ app.use(morgan("common"));
 app.use("/connect/auth", authRoute);
 app.use("/connect/board", boardRoute);
 
-server.listen(PORT || 5000, () => {
+server.listen(PORT || 8000, () => {
   console.log("Backend server is running!");
 });
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://tictactoesumit.onrender.com",
+    origin: "http://localhost:3000",
   },
 });
 
@@ -67,14 +67,19 @@ io.on("connection", (socket) => {
   });
 
   //send and get message
-  socket.on("senText", ({ senderId, receiverId, num, lastMove }) => {
-    const user = getUser(receiverId);
-    io.to(user.socketId).emit("getText", {
-      senderId,
-      num,
-      lastMove,
-    });
-  });
+  socket.on(
+    "sendText",
+    ({ senderId, receiverId, num, lastMove, fill, status }) => {
+      const user = getUser(receiverId);
+      io.to(user?.socketId).emit("getText", {
+        senderId,
+        num,
+        lastMove,
+        fill,
+        status,
+      });
+    }
+  );
 
   //when disconnect
   socket.on("disconnect", () => {

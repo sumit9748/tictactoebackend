@@ -4,6 +4,7 @@ const boardSchema = new mongoose.Schema(
   {
     users: {
       type: Array,
+      default: [],
     },
     status: {
       type: Boolean,
