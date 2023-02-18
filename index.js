@@ -22,7 +22,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://tictactoesumit.onrender.com",
     methods: "GET,POST,PUT,DELETE",
   })
 );
