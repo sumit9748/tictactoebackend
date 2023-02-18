@@ -22,7 +22,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://tictactoesumit.onrender.com/",
   })
 );
 app.use(express.json());
@@ -37,7 +37,7 @@ server.listen(PORT || 8000, () => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://tictactoesumit.onrender.com/",
   },
 });
 
