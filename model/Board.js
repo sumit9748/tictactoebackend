@@ -18,10 +18,6 @@ const boardSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    fill: {
-      type: Number,
-      default: 0,
-    },
     type: {
       type: Number,
       enum: [1, 2, 3],
