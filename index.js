@@ -32,7 +32,7 @@ app.use(morgan("common"));
 app.use("/connect/auth", authRoute);
 app.use("/connect/board", boardRoute);
 
-server.listen(8000, () => {
+server.listen(PORT || 8000, () => {
   console.log("Backend server is running!");
 });
 
