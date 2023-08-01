@@ -9,7 +9,7 @@ const cors = require("cors");
 
 const PORT = process.env.PORT;
 
-var server = require("http").createServer(app);
+var server = require("https").createServer(app);
 
 dotenv.config();
 
