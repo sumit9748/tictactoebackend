@@ -7,7 +7,7 @@ const boardRoute = require("./routes/board");
 const morgan = require("morgan");
 const cors = require("cors");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT|| 8000;
 
 var server = require("https").createServer(app);
 
@@ -32,7 +32,7 @@ app.use(morgan("common"));
 app.use("/connect/auth", authRoute);
 app.use("/connect/board", boardRoute);
 
-server.listen(PORT || 8000, () => {
+server.listen(PORT, () => {
   console.log("Backend server is running!");
 });
 
