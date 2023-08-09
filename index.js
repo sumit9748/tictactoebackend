@@ -6,10 +6,11 @@ const authRoute = require("./routes/auth");
 const boardRoute = require("./routes/board");
 const morgan = require("morgan");
 const cors = require("cors");
+const http=require("http")
 
 const PORT = process.env.PORT;
 
-var server = require("https").createServer(app);
+var server = http.createServer(app);
 
 dotenv.config();
 
