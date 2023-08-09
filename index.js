@@ -7,7 +7,7 @@ const boardRoute = require("./routes/board");
 const morgan = require("morgan");
 const cors = require("cors");
 
-const PORT = process.env.PORT|| 8000;
+const PORT = process.env.PORT;
 
 var server = require("https").createServer(app);
 
@@ -20,17 +20,17 @@ mongoose
     console.log(err);
   });
 
-app.use(
+server.use(
   cors({
-    origin: "*",
+    origin: "https://tictactoesumit.onrender.com",
     methods: "GET,POST,PUT,DELETE",
   })
 );
-app.use(express.json());
+server.use(express.json());
 // app.use(helmet());
-app.use(morgan("common"));
-app.use("/connect/auth", authRoute);
-app.use("/connect/board", boardRoute);
+server.use(morgan("common"));
+server.use("/connect/auth", authRoute);
+server.use("/connect/board", boardRoute);
 
 server.listen(PORT, () => {
   console.log("Backend server is running!");
