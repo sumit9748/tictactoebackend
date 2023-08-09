@@ -38,7 +38,7 @@ server.listen(PORT, () => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "*",
+    origin: "https://tictactoesumit.onrender.com",
   },
 });
 
