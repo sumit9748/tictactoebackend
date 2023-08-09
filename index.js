@@ -20,17 +20,17 @@ mongoose
     console.log(err);
   });
 
-server.use(
+app.use(
   cors({
     origin: "https://tictactoesumit.onrender.com",
     methods: "GET,POST,PUT,DELETE",
   })
 );
-server.use(express.json());
+app.use(express.json());
 // app.use(helmet());
-server.use(morgan("common"));
-server.use("/connect/auth", authRoute);
-server.use("/connect/board", boardRoute);
+app.use(morgan("common"));
+app.use("/connect/auth", authRoute);
+app.use("/connect/board", boardRoute);
 
 server.listen(PORT, () => {
   console.log("Backend server is running!");
