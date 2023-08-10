@@ -35,6 +35,7 @@ app.use("/connect/board", boardRoute);
 
 server.listen(PORT, () => {
   console.log("Backend server is running!");
+  console.log(users)
 });
 
 const io = require("socket.io")(server, {
